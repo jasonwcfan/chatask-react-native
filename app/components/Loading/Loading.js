@@ -3,23 +3,23 @@ import { View, ActivityIndicator } from 'react-native';
 import styles from './styles';
 
 const Loading = (props) => {
-  return (
-    <View style={styles.container}>
-      <ActivityIndicator
-        animating
-        size={props.size}
-        {...props}
-      />
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <ActivityIndicator
+                animating
+                size={props.size}
+                {...props}
+            />
+        </View>
+    );
 };
 
 Loading.propTypes = {
-  size: React.PropTypes.string,
+    size: React.PropTypes.string,
 };
 
 Loading.defaultProps = {
-  size: 'large',
+    size: 'large',
 };
 
 export default Loading;
