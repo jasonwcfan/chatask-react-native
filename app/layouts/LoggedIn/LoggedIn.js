@@ -8,6 +8,7 @@ import images from '../../config/images';
 import styles from './styles';
 import { ContactsView, TasksView, SettingsView, TabIcon } from '../../components/Navigation';
 import ChatsListContainer from '../../components/Chats/ChatsList';
+import ChatViewContainer from '../../components/Chats/ChatView';
 
 const reducerCreate = params => {
     const defaultReducer = new Reducer(params);
@@ -56,7 +57,7 @@ class LoggedIn extends Component {
                         />
                         <Scene
                             key="chats_tab_detail"
-                            component={ChatsListContainer}
+                            component={ChatViewContainer}
                             title="Chat Name Placeholder"
                             titleStyle={{ color: 'black' }}
                         />

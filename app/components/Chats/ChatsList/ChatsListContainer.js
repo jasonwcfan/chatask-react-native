@@ -14,7 +14,6 @@ import ChatsList from './ChatsList';
 
 export default ChatsListContainer = createContainer((props) => {
     const chatsHandle = Meteor.subscribe('chats');
-    console.log(Meteor.collection('chats').find({}));
     return {
         name: props.name,
         sceneStyle: props.sceneStyle,
