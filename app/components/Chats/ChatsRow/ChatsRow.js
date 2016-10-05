@@ -1,5 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
     container: {
@@ -19,14 +20,27 @@ const styles = StyleSheet.create({
     },
 });
 
-const ChatsRow = (props) => {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.text}>
-                {props.chat.name}
-            </Text>
-        </View>
-    )
+
+
+class ChatsRow extends Component {
+    showChat() {
+        console.log(this.props);
+        // return Actions.chats_tab_detail(props.chat);
+    }
+
+    render() {
+        return (
+            <TouchableOpacity style={styles.container} onPress={() => this.showChat()}>
+                <Text style={styles.text}>
+                    {this.props.chat.name}
+                </Text>
+            </TouchableOpacity>
+        )
+    }
+}
+
+ChatsRow.propTypes = {
+
 };
 
 export default ChatsRow;

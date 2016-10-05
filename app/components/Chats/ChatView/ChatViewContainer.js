@@ -3,13 +3,14 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import ChatView from './ChatView';
 
 export default ChatViewContainer = createContainer((props) => {
-    const messagesHandle = Meteor.subscribe('chats');
-    console.log(Meteor.collection('chats').find({}));
+    console.log(props);
+    const messagesHandle = Meteor.subscribe('messages');
+    console.log(Meteor.collection('messages').find({}));
     return {
         name: props.name,
         sceneStyle: props.sceneStyle,
         title: props.title,
-        chatsReady: chatsHandle.ready(),
+        chatsReady: messagesHandle.ready(),
         chats: Meteor.collection('chats').find({}),
     };
 }, ChatView);

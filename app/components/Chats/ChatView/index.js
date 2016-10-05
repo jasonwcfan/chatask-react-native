@@ -1,3 +1,3 @@
-import ChatView from './ChatView';
+import ChatViewContainer from './ChatViewContainer';
 
-export default ChatView;
+export default ChatViewContainer;

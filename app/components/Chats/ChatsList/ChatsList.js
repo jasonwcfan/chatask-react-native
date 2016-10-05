@@ -7,14 +7,6 @@ import ChatsRow from '../ChatsRow';
 import ChatsSearch from '../ChatsSearch'
 import Loading from '../../Loading'
 
-const propTypes = {
-    name: PropTypes.string,
-    sceneStyle: View.propTypes.style,
-    title: PropTypes.string,
-    chatsReady: PropTypes.bool,
-    chats: PropTypes.array,
-};
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -32,7 +24,6 @@ const styles = StyleSheet.create({
 class ChatsList extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
 
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
@@ -57,6 +48,12 @@ class ChatsList extends Component {
     }
 };
 
-ChatsList.propTypes = propTypes;
+ChatsList.propTypes = {
+    name: PropTypes.string,
+    sceneStyle: View.propTypes.style,
+    title: PropTypes.string,
+    chatsReady: PropTypes.bool,
+    chats: PropTypes.array,
+};
 
 export default ChatsList;

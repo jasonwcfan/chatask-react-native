@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import TabNavigator from 'react-native-tab-navigator';
-import ExNavigator from '@exponent/react-native-navigator';
 import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst } from 'react-native-router-flux'
 import Routes from '../../config/routes';
 import images from '../../config/images';
@@ -33,6 +31,7 @@ const getSceneStyle = (/* NavigationSceneRendererProps */ props, computedProps) 
     return style;
 };
 
+// Specifies the navigation layout of the app
 class LoggedIn extends Component {
     render() {
         return (
