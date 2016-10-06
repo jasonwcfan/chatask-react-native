@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
 
 class ChatsRow extends Component {
     showChat() {
-        console.log(this.props);
-        // return Actions.chats_tab_detail(props.chat);
+        return Actions.chats_tab_detail(this.props);
     }
 
     render() {

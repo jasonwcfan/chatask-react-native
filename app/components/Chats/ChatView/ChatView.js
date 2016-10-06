@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import {GiftedChat, Actions, Bubble} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
+import Loading from '../../Loading';
 
 const styles = StyleSheet.create({
     footerContainer: {
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
 class ChatView extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
             messages: [],
             loadEarlier: true,
@@ -40,11 +42,12 @@ class ChatView extends Component {
 
     componentWillMount() {
         this._isMounted = true;
-        this.setState(() => {
-            return {
-                messages: require('./data/messages.js'),
-            };
-        });
+        console.log(this.props);
+        // this.setState(() => {
+        //     return {
+        //         messages: require('./data/messages.js'),
+        //     };
+        // });
     }
 
     componentWillUnmount() {
@@ -194,6 +197,10 @@ class ChatView extends Component {
     }
 
     render() {
+        console.log(this.props.messagesReady);
+        if (!this.props.messagesReady) {
+            return <Loading />
+        }
         return (
             <GiftedChat
                 messages={this.state.messages}
@@ -215,4 +222,11 @@ class ChatView extends Component {
     }
 }
 
+ChatView.propTypes = {
+    name: PropTypes.string,
+    sceneStyle: View.propTypes.style,
+    title: PropTypes.string,
+    messagesReady: PropTypes.bool,
+    messages: PropTypes.array,
+};
 export default ChatView;
