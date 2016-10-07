@@ -4,6 +4,7 @@ import {GiftedChat, Actions, Bubble} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
 import Loading from '../../Loading';
+import Meteor from 'react-native-meteor';
 
 const styles = StyleSheet.create({
     footerContainer: {
@@ -21,9 +22,7 @@ const styles = StyleSheet.create({
 class ChatView extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
-            messages: [],
             loadEarlier: true,
             typingText: null,
             isLoadingEarlier: false,
@@ -42,16 +41,19 @@ class ChatView extends Component {
 
     componentWillMount() {
         this._isMounted = true;
-        console.log(this.props);
         // this.setState(() => {
         //     return {
-        //         messages: require('./data/messages.js'),
+        //         messages: this.props.messages,
         //     };
         // });
     }
 
     componentWillUnmount() {
         this._isMounted = false;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+
     }
 
     onLoadEarlier() {
@@ -74,15 +76,10 @@ class ChatView extends Component {
         }, 1000); // simulating network
     }
 
-    onSend(messages = []) {
-        this.setState((previousState) => {
-            return {
-                messages: GiftedChat.append(previousState.messages, messages),
-            };
-        });
-
-        // for demo purpose
-        this.answerDemo(messages);
+    onSend(messages) {
+        for (let i = 0; i < messages.length; i++) {
+            Meteor.call('messages.insert', messages[i], this.props.chat, Meteor.user());
+        }
     }
 
     answerDemo(messages) {
@@ -121,20 +118,21 @@ class ChatView extends Component {
     }
 
     onReceive(text) {
-        this.setState((previousState) => {
-            return {
-                messages: GiftedChat.append(previousState.messages, {
-                    _id: Math.round(Math.random() * 1000000),
-                    text: text,
-                    createdAt: new Date(),
-                    user: {
-                        _id: 2,
-                        name: 'React Native',
-                        // avatar: 'https://facebook.github.io/react/img/logo_og.png',
-                    },
-                }),
-            };
-        });
+        // this.setState((previousState) => {
+        //     return {
+        //         messages: GiftedChat.append(previousState.messages, {
+        //             _id: Math.round(Math.random() * 1000000),
+        //             text: text,
+        //             createdAt: new Date(),
+        //             user: {
+        //                 _id: 2,
+        //                 name: 'React Native',
+        //                 // avatar: 'https://facebook.github.io/react/img/logo_og.png',
+        //             },
+        //         }),
+        //     };
+        // });
+        console.log('received message');
     }
 
     renderCustomActions(props) {
@@ -197,20 +195,19 @@ class ChatView extends Component {
     }
 
     render() {
-        console.log(this.props.messagesReady);
         if (!this.props.messagesReady) {
             return <Loading />
         }
         return (
             <GiftedChat
-                messages={this.state.messages}
+                messages={this.props.messages}
                 onSend={this.onSend}
                 loadEarlier={this.state.loadEarlier}
                 onLoadEarlier={this.onLoadEarlier}
                 isLoadingEarlier={this.state.isLoadingEarlier}
 
                 user={{
-          _id: 1, // sent messages should have same user._id
+          _id: this.props.user._id, // sent messages should have same user._id
         }}
 
                 renderActions={this.renderCustomActions}

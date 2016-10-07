@@ -7,6 +7,7 @@ import styles from './styles';
 import { ContactsView, TasksView, SettingsView, TabIcon } from '../../components/Navigation';
 import ChatsListContainer from '../../components/Chats/ChatsList';
 import ChatViewContainer from '../../components/Chats/ChatView';
+import Meteor from 'react-native-meteor';
 
 const reducerCreate = params => {
     const defaultReducer = new Reducer(params);
@@ -51,8 +52,8 @@ class LoggedIn extends Component {
                             key="chats_tab_master"
                             component={ChatsListContainer}
                             title="Chats"
-                            onRight={() => alert('Right button')}
-                            rightTitle="Right"
+                            onRight={() => Meteor.logout()}
+                            rightTitle="Logout"
                         />
                         <Scene
                             key="chats_tab_detail"

@@ -53,15 +53,15 @@ const SignIn = (props) => {
 
             <KeyboardSpacer />
         </View>
-    );
+        );
 };
 
 SignIn.propTypes = {
-      updateState: React.PropTypes.func,
-      signIn: React.PropTypes.func,
-      createAccount: React.PropTypes.func,
-      error: React.PropTypes.string,
-      confirmPasswordVisible: React.PropTypes.bool,
+  updateState: React.PropTypes.func,
+  signIn: React.PropTypes.func,
+  createAccount: React.PropTypes.func,
+  error: React.PropTypes.string,
+  confirmPasswordVisible: React.PropTypes.bool,
 };
 
 export default SignIn;

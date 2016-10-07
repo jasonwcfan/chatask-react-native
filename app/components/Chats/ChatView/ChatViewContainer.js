@@ -4,11 +4,10 @@ import ChatView from './ChatView';
 
 export default ChatViewContainer = createContainer((props) => {
     const messagesHandle = Meteor.subscribe('messages');
-    const messages = Meteor.collection('messages').find({chatId: props.chat._id});
-    // console.log(messages);
-    // console.log(messagesHandle.ready());
+    const messages = Meteor.collection('messages').find({chatId: props.chat._id}, {sort: {createdAt: -1}, limit: 10});
     return {
         messagesReady: messagesHandle.ready(),
-        messages: messages
+        messages: messages,
+        user: Meteor.user(),
     };
 }, ChatView);

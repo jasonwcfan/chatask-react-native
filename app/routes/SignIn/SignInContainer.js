@@ -65,7 +65,7 @@ class SignInContainer extends Component {
         const { email, password, confirmPasswordVisible } = this.state;
 
         if (confirmPasswordVisible && this.validInput()) {
-            Accounts.createUser({ email, password }, (err) => {
+            Accounts.createUser({ email, password, profile: { name: 'Test User' }}, (err) => {
                 if (err) {
                     this.handleError(err.reason);
                 } else {
