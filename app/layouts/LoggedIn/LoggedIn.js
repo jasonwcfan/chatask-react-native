@@ -7,6 +7,7 @@ import styles from './styles';
 import { ContactsView, TasksView, SettingsView, TabIcon } from '../../components/Navigation';
 import ChatsListContainer from '../../components/Chats/ChatsList';
 import ChatViewContainer from '../../components/Chats/ChatView';
+import ContactsListContainer from '../../components/Contacts/ContactsList';
 import Meteor from 'react-native-meteor';
 
 const reducerCreate = params => {
@@ -44,6 +45,7 @@ class LoggedIn extends Component {
                     tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle} >
                     <Scene
                         key="chats_tab"
+                        initial
                         title="Chats"
                         icon={TabIcon}
                         // navigationBarStyle={{ backgroundColor: 'red' }}
@@ -64,24 +66,17 @@ class LoggedIn extends Component {
                     </Scene>
                     <Scene
                         key="contacts_tab"
-                        initial
                         title="Contacts"
                         icon={TabIcon} >
                         <Scene
                             key="contacts_tab_master"
-                            component={ContactsView}
+                            component={ContactsListContainer}
                             title="Contacts"
-                            renderRightButton={() => <Text>Right</Text>}
                         />
                         <Scene
                             key="contacts_tab_detail"
                             component={ContactsView}
                             title="Contact Name Placeholder"
-                            hideBackImage
-                            onBack={() => alert('Left button!')}
-                            backTitle="Left"
-                            duration={1}
-                            panHandlers={null}
                         />
                     </Scene>
                     <Scene
