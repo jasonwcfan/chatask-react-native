@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Meteor from 'react-native-meteor';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst } from 'react-native-router-flux'
 import Routes from '../../config/routes';
@@ -8,7 +9,7 @@ import { ContactsView, TasksView, SettingsView, TabIcon } from '../../components
 import ChatsList from '../../components/Chats/ChatsList';
 import ChatView from '../../components/Chats/ChatView';
 import ContactsList from '../../components/Contacts/ContactsList';
-import Meteor from 'react-native-meteor';
+import { Chats } from '../../lib/collections';
 
 const reducerCreate = params => {
     const defaultReducer = new Reducer(params);
@@ -54,7 +55,8 @@ class LoggedIn extends Component {
                             key="chats_tab_master"
                             component={ChatsList}
                             title="Chats"
-                            onRight={() => createChat()}
+                            titleStyle={{ color: 'black' }}
+                            onRight={() => {Chats.createChat('TestName', [Meteor.user()])}}
                             rightTitle="New"
                         />
                         <Scene
@@ -62,6 +64,14 @@ class LoggedIn extends Component {
                             component={ChatView}
                             title="Chat Name Placeholder"
                             titleStyle={{ color: 'black' }}
+                            onRight={() => {Actions.chats_tab_invite()}}
+                            rightTitle="Invite"
+                        />
+                        <Scene
+                            key="chats_tab_invite"
+                            component={ContactsList}
+                            titleStyle={{ color: 'black' }}
+                            title="Invite to conversation"
                         />
                     </Scene>
                     <Scene

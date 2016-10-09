@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
 
 class ContactsRow extends Component {
     showContact() {
+        console.log(this.props);
         return Actions.contacts_tab_detail(this.props);
     }
 

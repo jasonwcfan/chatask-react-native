@@ -39,7 +39,7 @@ class ChatsRow extends Component {
 }
 
 ChatsRow.propTypes = {
-
+    chat: React.PropTypes.object
 };
 
 export default ChatsRow;

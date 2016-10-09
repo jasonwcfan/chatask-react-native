@@ -4,7 +4,7 @@ import {GiftedChat, Actions, Bubble} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
 import Loading from '../../Loading';
-import Meteor from 'react-native-meteor';
+import { Messages } from '../../../lib/collections';
 
 const styles = StyleSheet.create({
     footerContainer: {
@@ -78,7 +78,7 @@ class ChatView extends Component {
 
     onSend(messages) {
         for (let i = 0; i < messages.length; i++) {
-            Meteor.call('messages.insert', messages[i], this.props.chat, Meteor.user());
+            Messages.createMessage(messages[i], this.props.chat);
         }
     }
 
