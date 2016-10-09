@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 class ContactsList extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
+        console.log(this.props);
 
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
@@ -40,7 +40,7 @@ class ContactsList extends Component {
             <View style={[styles.container, this.props.sceneStyle ]}>
                 <MeteorListView
                     collection="users"
-                    renderRow={(contact) => <ContactsRow contact={contact} />}
+                    renderRow={(contact) => <ContactsRow contact={contact} touchAction={this.props.touchAction}/>}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                     renderHeader={() => <ContactsSearch />}
                 />
@@ -55,6 +55,7 @@ ContactsList.propTypes = {
     title: PropTypes.string,
     chatsReady: PropTypes.bool,
     chats: PropTypes.array,
+    touchAction: PropTypes.func
 };
 
 export default ContactsList;

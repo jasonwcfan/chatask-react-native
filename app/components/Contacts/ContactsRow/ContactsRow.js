@@ -23,14 +23,9 @@ const styles = StyleSheet.create({
 
 
 class ContactsRow extends Component {
-    showContact() {
-        console.log(this.props);
-        return Actions.contacts_tab_detail(this.props);
-    }
-
     render() {
         return (
-            <TouchableOpacity style={styles.container} onPress={() => this.showContact()}>
+            <TouchableOpacity style={styles.container} onPress={() => this.props.touchAction()}>
                 <Text style={styles.text}>
                     {this.props.contact.profile.name}
                 </Text>
@@ -39,8 +34,15 @@ class ContactsRow extends Component {
     }
 }
 
-ContactsRow.propTypes = {
+ContactsRow.defaultProps = {
+    touchAction: function() {
+        return Actions.contacts_tab_detail(this.props);
+    }
+}
 
+ContactsRow.propTypes = {
+    contact: PropTypes.object,
+    touchAction: PropTypes.func
 };
 
 export default ContactsRow;

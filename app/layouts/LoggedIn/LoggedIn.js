@@ -64,7 +64,9 @@ class LoggedIn extends Component {
                             component={ChatView}
                             title="Chat Name Placeholder"
                             titleStyle={{ color: 'black' }}
-                            onRight={() => {Actions.chats_tab_invite()}}
+                            onRight={() => {Actions.chats_tab_invite({touchAction: () => {
+                                console.log(this.props);
+                            }})}}
                             rightTitle="Invite"
                         />
                         <Scene
