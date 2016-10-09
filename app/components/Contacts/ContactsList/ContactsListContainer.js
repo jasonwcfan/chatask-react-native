@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 import ContactsList from './ContactsList';
 
-export default ContactsListContainer = createContainer((props) => {
+export default createContainer((props) => {
     const contactsHandle = Meteor.subscribe('users');
     return {
         name: props.name,

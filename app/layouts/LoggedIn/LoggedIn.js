@@ -5,9 +5,9 @@ import Routes from '../../config/routes';
 import images from '../../config/images';
 import styles from './styles';
 import { ContactsView, TasksView, SettingsView, TabIcon } from '../../components/Navigation';
-import ChatsListContainer from '../../components/Chats/ChatsList';
-import ChatViewContainer from '../../components/Chats/ChatView';
-import ContactsListContainer from '../../components/Contacts/ContactsList';
+import ChatsList from '../../components/Chats/ChatsList';
+import ChatView from '../../components/Chats/ChatView';
+import ContactsList from '../../components/Contacts/ContactsList';
 import Meteor from 'react-native-meteor';
 
 const reducerCreate = params => {
@@ -52,14 +52,14 @@ class LoggedIn extends Component {
                         titleStyle={{ color: 'white' }} >
                         <Scene
                             key="chats_tab_master"
-                            component={ChatsListContainer}
+                            component={ChatsList}
                             title="Chats"
-                            onRight={() => Meteor.logout()}
-                            rightTitle="Logout"
+                            onRight={() => createChat()}
+                            rightTitle="New"
                         />
                         <Scene
                             key="chats_tab_detail"
-                            component={ChatViewContainer}
+                            component={ChatView}
                             title="Chat Name Placeholder"
                             titleStyle={{ color: 'black' }}
                         />
@@ -70,7 +70,7 @@ class LoggedIn extends Component {
                         icon={TabIcon} >
                         <Scene
                             key="contacts_tab_master"
-                            component={ContactsListContainer}
+                            component={ContactsList}
                             title="Contacts"
                         />
                         <Scene
