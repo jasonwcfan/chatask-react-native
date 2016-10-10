@@ -56,7 +56,10 @@ class LoggedIn extends Component {
                             component={ChatsList}
                             title="Chats"
                             titleStyle={{ color: 'black' }}
-                            onRight={() => {Chats.createChat('TestName', [Meteor.user()])}}
+                            onRight={(props) => {Actions.chats_tab_invite({onTouch: (contact) => {
+                                Chats.createChat(contact.profile.name, [Meteor.user()]);
+                                Actions.chats_tab_detail();
+                            }})}}
                             rightTitle="New"
                         />
                         <Scene
@@ -66,7 +69,7 @@ class LoggedIn extends Component {
                             titleStyle={{ color: 'black' }}
                             onRight={(props) => {Actions.chats_tab_invite({onTouch: (contact) => {
                                 Chats.inviteContactToConversation(props.chat, contact);
-                                Alert.alert('Added to chat', 'blahblah', () => Actions.pop() );
+                                Alert.alert('Added to chat', null, () => Actions.pop() );
                             }})}}
                             rightTitle="Invite"
                         />
