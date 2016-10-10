@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Swipeout from 'react-native-swipeout';
 
 const styles = StyleSheet.create({
     container: {

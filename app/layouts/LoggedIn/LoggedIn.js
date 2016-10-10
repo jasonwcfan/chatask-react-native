@@ -58,7 +58,7 @@ class LoggedIn extends Component {
                             titleStyle={{ color: 'black' }}
                             onRight={(props) => {Actions.chats_tab_invite({onTouch: (contact) => {
                                 Chats.createChat(contact.profile.name, [Meteor.user()]);
-                                Actions.chats_tab_detail();
+                                Actions.pop();
                             }})}}
                             rightTitle="New"
                         />
