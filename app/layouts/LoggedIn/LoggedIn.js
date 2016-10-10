@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Meteor from 'react-native-meteor';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Alert } from 'react-native';
 import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst } from 'react-native-router-flux'
 import Routes from '../../config/routes';
 import images from '../../config/images';
@@ -65,11 +65,8 @@ class LoggedIn extends Component {
                             title="Chat Name Placeholder"
                             titleStyle={{ color: 'black' }}
                             onRight={(props) => {Actions.chats_tab_invite({onTouch: (contact) => {
-                                if (Chats.inviteContactToConversation(props.chat, contact)) {
-                                    console.log('added');
-                                } else {
-                                    console.log('not added');
-                                }
+                                Chats.inviteContactToConversation(props.chat, contact);
+                                Alert.alert('Added to chat', 'blahblah', () => Actions.pop() );
                             }})}}
                             rightTitle="Invite"
                         />
