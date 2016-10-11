@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Meteor from 'react-native-meteor';
 import {StyleSheet, Text, View, ListView} from "react-native";
 import { MeteorListView } from 'react-native-meteor';
 import Button from 'react-native-button';
@@ -24,11 +25,7 @@ const styles = StyleSheet.create({
 class ChatsList extends Component {
     constructor(props) {
         super(props);
-
-        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-            dataSource: ds.cloneWithRows(props.chats),
-        };
+        console.log(props.chats);
     }
 
     render() {
@@ -39,6 +36,7 @@ class ChatsList extends Component {
             <View style={[styles.container, this.props.sceneStyle ]}>
                 <MeteorListView
                     collection="chats"
+                    selector={{'participants._id': Meteor.user()._id}}
                     renderRow={(chat) => <ChatsRow chat={chat} />}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                     renderHeader={() => <ChatsSearch />}
