@@ -57,13 +57,23 @@ class LoggedIn extends Component {
                                 Chats.createChat(contact.profile.name, [Meteor.user()]);
                                 Actions.pop();
                             }})}}
+                            onLeft={() => Meteor.logout()}
+                            leftTitle="Logout"
                             rightTitle="New"
                         />
                         <Scene
                             key="chats_tab_detail"
                             component={ChatView}
                             title="Chat Name Placeholder"
-                            titleStyle={{ color: 'black' }}
+                            onRight={(props) => {Actions.chats_tab_participants({
+                                selector: {}
+                            })}}
+                            rightTitle="Details"
+                        />
+                        <Scene
+                            key="chats_tab_participants"
+                            component={ContactsList}
+                            title="Chat Participants"
                             onRight={(props) => {Actions.chats_tab_invite({onTouch: (contact) => {
                                 Chats.inviteContactToConversation(props.chat, contact);
                                 Alert.alert('Added to chat', null, () => Actions.pop() );
@@ -73,7 +83,6 @@ class LoggedIn extends Component {
                         <Scene
                             key="chats_tab_invite"
                             component={ContactsList}
-                            titleStyle={{ color: 'black' }}
                             title="Invite to conversation"
                         />
                     </Scene>

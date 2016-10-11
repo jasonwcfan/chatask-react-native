@@ -9,6 +9,5 @@ export default createContainer((props) => {
         sceneStyle: props.sceneStyle,
         title: props.title,
         contactsReady: contactsHandle.ready(),
-        contacts: Meteor.collection('users').find({}),
     };
 }, ContactsList);

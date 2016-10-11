@@ -34,6 +34,7 @@ class ContactsList extends Component {
             <View style={[styles.container, this.props.sceneStyle ]}>
                 <MeteorListView
                     collection="users"
+                    selector={this.props.selector}
                     renderRow={(contact) => <ContactsRow contact={contact} onTouch={this.props.onTouch}/>}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                     renderHeader={() => <ContactsSearch />}
@@ -47,9 +48,13 @@ ContactsList.propTypes = {
     name: PropTypes.string,
     sceneStyle: View.propTypes.style,
     title: PropTypes.string,
-    chatsReady: PropTypes.bool,
-    chats: PropTypes.array,
-    onTouch: PropTypes.func
+    contactsReady: PropTypes.bool,
+    onTouch: PropTypes.func,
+    selector: PropTypes.object
 };
+
+ContactsList.defaultProps = {
+    selector: {}
+}
 
 export default ContactsList;

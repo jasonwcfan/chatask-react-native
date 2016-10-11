@@ -10,6 +10,5 @@ export default createContainer((props) => {
         sceneStyle: props.sceneStyle,
         title: props.title,
         chatsReady: chatsHandle.ready(),
-        chats: Meteor.collection('chats').find({'participants._id': Meteor.user()._id}),
     };
 }, ChatsList);

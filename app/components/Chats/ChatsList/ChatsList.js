@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
 class ChatsList extends Component {
     constructor(props) {
         super(props);
-        console.log(props.chats);
     }
 
     render() {
@@ -51,7 +50,6 @@ ChatsList.propTypes = {
     sceneStyle: View.propTypes.style,
     title: PropTypes.string,
     chatsReady: PropTypes.bool,
-    chats: PropTypes.array,
 };
 
 export default ChatsList;
