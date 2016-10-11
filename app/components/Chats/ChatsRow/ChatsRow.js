@@ -19,10 +19,6 @@ const styles = StyleSheet.create({
         width: 40,
         borderRadius: 20,
     },
-
-    swipeout: {
-        backgroundColor: '#F5FCFF'
-    }
 });
 
 
@@ -34,11 +30,9 @@ class ChatsRow extends Component {
 
     render() {
         return (
-            <Swipeout right={[{text: 'Delete', backgroundColor: '#db1a1a'}]} backgroundColor='#F5FCFF'>
-                <TouchableOpacity onPress={() => this.showChat()}>
-                    <View style={styles.container}>
+            <Swipeout right={[{text: 'Delete', backgroundColor: '#db1a1a'}]} backgroundColor='transparent' >
+                <TouchableOpacity onPress={() => this.showChat()} style={styles.container}>
                         <Text style={styles.text}> {this.props.chat.name} </Text>
-                    </View>
                 </TouchableOpacity>
             </Swipeout>
         )

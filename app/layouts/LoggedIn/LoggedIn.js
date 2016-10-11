@@ -48,14 +48,11 @@ class LoggedIn extends Component {
                         key="chats_tab"
                         initial
                         title="Chats"
-                        icon={TabIcon}
-                        // navigationBarStyle={{ backgroundColor: 'red' }}
-                        titleStyle={{ color: 'white' }} >
+                        icon={TabIcon} >
                         <Scene
                             key="chats_tab_master"
                             component={ChatsList}
                             title="Chats"
-                            titleStyle={{ color: 'black' }}
                             onRight={(props) => {Actions.chats_tab_invite({onTouch: (contact) => {
                                 Chats.createChat(contact.profile.name, [Meteor.user()]);
                                 Actions.pop();
