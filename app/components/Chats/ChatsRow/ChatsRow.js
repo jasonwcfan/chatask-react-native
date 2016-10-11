@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Swipeout from 'react-native-swipeout';
+import Chats from '../../../lib/collections/chats';
 
 const styles = StyleSheet.create({
     container: {
@@ -29,8 +30,11 @@ class ChatsRow extends Component {
     }
 
     render() {
+        const deleteButton = {text: 'Delete', backgroundColor: '#db1a1a', onPress: () => {
+            Chats.deleteChat(this.props.chat);
+        }};
         return (
-            <Swipeout right={[{text: 'Delete', backgroundColor: '#db1a1a'}]} backgroundColor='transparent' >
+            <Swipeout right={[deleteButton]} backgroundColor='transparent' autoClose={true}>
                 <TouchableOpacity onPress={() => this.showChat()} style={styles.container}>
                         <Text style={styles.text}> {this.props.chat.name} </Text>
                 </TouchableOpacity>

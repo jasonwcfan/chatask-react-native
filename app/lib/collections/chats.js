@@ -6,6 +6,10 @@ const Chat = {
         Meteor.call('chats.insert', name, participants);
     },
     
+    deleteChat: function(chat) {
+        Meteor.call('chats.remove', chat);
+    },
+    
     inviteContactToConversation: function(chat, contact) {
         Meteor.call('chats.addUser', chat, contact);
     }
