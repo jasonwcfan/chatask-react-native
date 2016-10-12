@@ -51,7 +51,7 @@ class ContactsAddFriend extends Component {
     }
 
     _handleButtonPress(state) {
-        Users.addFriend(state.email);
+        console.log(Users.addFriend(state.email));
     }
 
     render() {
