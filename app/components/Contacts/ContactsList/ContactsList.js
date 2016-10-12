@@ -55,6 +55,6 @@ ContactsList.propTypes = {
 
 ContactsList.defaultProps = {
     selector: {}
-}
+};
 
 export default ContactsList;

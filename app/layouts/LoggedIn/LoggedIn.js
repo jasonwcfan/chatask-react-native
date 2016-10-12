@@ -9,6 +9,7 @@ import { ContactsView, TasksView, SettingsView, TabIcon } from '../../components
 import ChatsList from '../../components/Chats/ChatsList';
 import ChatView from '../../components/Chats/ChatView';
 import ContactsList from '../../components/Contacts/ContactsList';
+import ContactsAddFriend from '../../components/Contacts/ContactsAddFriend';
 import { Chats } from '../../lib/collections';
 
 const reducerCreate = params => {
@@ -94,10 +95,17 @@ class LoggedIn extends Component {
                             key="contacts_tab_master"
                             component={ContactsList}
                             title="Contacts"
+                            onRight={(props) => Actions.contacts_tab_add_friend()}
+                            rightTitle="Add"
                         />
                         <Scene
                             key="contacts_tab_detail"
                             component={ContactsView}
+                            title="Contact Name Placeholder"
+                        />
+                        <Scene
+                            key="contacts_tab_add_friend"
+                            component={ContactsAddFriend}
                             title="Contact Name Placeholder"
                         />
                     </Scene>
