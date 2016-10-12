@@ -1,11 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {StyleSheet, Text, View, ListView, TextInput, TouchableOpacity} from "react-native";
-import { MeteorListView } from 'react-native-meteor';
-import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
-import ContactsRow from '../ContactsRow';
-import ContactsSearch from '../ContactsSearch'
-import Loading from '../../Loading'
+import { Users } from '../../../lib/collections';
 
 const styles = StyleSheet.create({
     container: {
@@ -49,15 +45,27 @@ const styles = StyleSheet.create({
 class ContactsAddFriend extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            email: null
+        };
+    }
+
+    _handleButtonPress(state) {
+        Users.addFriend(state.email);
     }
 
     render() {
         return (
             <View style={[styles.container, this.props.sceneStyle ]}>
                 <View style={styles.textbox}>
-                    <TextInput style={styles.textinput} placeholder="Search by email..." />
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="Search by email..."
+                        value={this.state.email}
+                        onChangeText={(email) => this.setState({email})}
+                    />
                 </View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => this._handleButtonPress(this.state)}>
                     <Text>Add Friend</Text>
                 </TouchableOpacity>
             </View>
