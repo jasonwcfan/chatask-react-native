@@ -55,7 +55,7 @@ class LoggedIn extends Component {
                             component={ChatsList}
                             title="Chats"
                             onRight={(props) => {Actions.chats_tab_invite({onTouch: (contact) => {
-                                Chats.createChat(contact.profile.name, [Meteor.user()]);
+                                Chats.createChat(contact.profile.name, [Meteor.user(), contact]);
                                 Actions.pop();
                             }})}}
                             onLeft={() => Meteor.logout()}
