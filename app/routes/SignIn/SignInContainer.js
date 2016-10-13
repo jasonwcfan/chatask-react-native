@@ -9,10 +9,11 @@ class SignInContainer extends Component {
 
         this.mounted = false;
         this.state = {
+            name: '',
             email: '',
             password: '',
             confirmPassword: '',
-            confirmPasswordVisible: false,
+            creatingNewAccount: false,
             error: null,
         };
     }
@@ -30,15 +31,15 @@ class SignInContainer extends Component {
     }
 
     validInput(overrideConfirm) {
-        const { email, password, confirmPassword, confirmPasswordVisible } = this.state;
+        const { name, email, password, confirmPassword, creatingNewAccount } = this.state;
         let valid = true;
 
-        if (email.length === 0 || password.length === 0) {
-            this.handleError('Email and password cannot be empty.');
+        if (name.length === 0 || email.length === 0 || password.length === 0) {
+            this.handleError('Name, email and password cannot be empty.');
             valid = false;
         }
 
-        if (!overrideConfirm && confirmPasswordVisible && password !== confirmPassword) {
+        if (!overrideConfirm && creatingNewAccount && password !== confirmPassword) {
             this.handleError('Passwords do not match.');
             valid = false;
         }
@@ -51,7 +52,12 @@ class SignInContainer extends Component {
     }
 
     handleSignIn() {
-        if (this.validInput(true)) {
+        const { creatingNewAccount } = this.state;
+
+        if (creatingNewAccount) {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+            this.setState({ creatingNewAccount: false });
+        } else if (this.validInput(true)) {
             const { email, password } = this.state;
             Meteor.loginWithPassword(email, password, (err) => {
                 if (err) {
@@ -62,10 +68,10 @@ class SignInContainer extends Component {
     }
 
     handleCreateAccount() {
-        const { email, password, confirmPasswordVisible } = this.state;
+        const { name, email, password, creatingNewAccount } = this.state;
 
-        if (confirmPasswordVisible && this.validInput()) {
-            Accounts.createUser({ email, password, profile: { name: 'Test User' }}, (err) => {
+        if (creatingNewAccount && this.validInput()) {
+            Accounts.createUser({ email, password, profile: { name }}, (err) => {
                 if (err) {
                     this.handleError(err.reason);
                 } else {
@@ -75,7 +81,7 @@ class SignInContainer extends Component {
             });
         } else {
             LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
-            this.setState({ confirmPasswordVisible: true });
+            this.setState({ creatingNewAccount: true });
         }
     }
 

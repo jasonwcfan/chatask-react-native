@@ -12,6 +12,7 @@ const GenericTextInput = (props) => {
                 autoCorrect={false}
                 {...props}
             />
+            {props.borderBottom ? <View style={styles.divider} /> : null}
         </View>
     );
 };

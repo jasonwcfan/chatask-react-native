@@ -7,7 +7,7 @@ import images from '../../config/images';
 import styles from './styles';
 
 const SignIn = (props) => {
-    const { updateState, signIn, createAccount, error, confirmPasswordVisible } = props;
+    const { updateState, signIn, createAccount, error, creatingNewAccount } = props;
 
     return (
         <View style={styles.container}>
@@ -22,6 +22,13 @@ const SignIn = (props) => {
             </View>
 
             <InputWrapper>
+                {creatingNewAccount ?
+                    <GenericTextInput
+                        placeholder="name"
+                        onChangeText={(name) => updateState({ name })}
+                        borderBottom
+                    />
+                    : null}
                 <GenericTextInput
                     placeholder="email address"
                     onChangeText={(email) => updateState({ email })}
@@ -32,7 +39,7 @@ const SignIn = (props) => {
                     secureTextEntry
                     borderTop
                 />
-                {confirmPasswordVisible ?
+                {creatingNewAccount ?
                 <GenericTextInput
                     placeholder="confirm password"
                     onChangeText={(confirmPassword) => updateState({ confirmPassword })}
@@ -61,7 +68,7 @@ SignIn.propTypes = {
   signIn: React.PropTypes.func,
   createAccount: React.PropTypes.func,
   error: React.PropTypes.string,
-  confirmPasswordVisible: React.PropTypes.bool,
+  creatingNewAccount: React.PropTypes.bool,
 };
 
 export default SignIn;
