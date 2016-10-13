@@ -109,7 +109,7 @@ class LoggedIn extends Component {
                             title="Contact Name Placeholder"
                         />
                     </Scene>
-                    <Scene
+                    {/*<Scene
                         key="tasks_tab"
                         component={TasksView}
                         title="Tasks"
@@ -120,7 +120,7 @@ class LoggedIn extends Component {
                         component={SettingsView}
                         title="Settings"
                         icon={TabIcon}
-                    />
+                    />*/}
                 </Scene>
 
             </Router>
