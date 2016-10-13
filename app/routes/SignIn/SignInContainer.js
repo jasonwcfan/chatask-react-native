@@ -81,7 +81,11 @@ class SignInContainer extends Component {
                     this.handleError(err.reason);
                 } else {
                     // hack because react-native-meteor doesn't login right away after sign in
-                    this.handleSignIn();
+                    Meteor.loginWithPassword(email, password, (err) => {
+                        if (err) {
+                            this.handleError(err.reason);
+                        }
+                    });
                 }
             });
         } else {
