@@ -25,11 +25,10 @@ const styles = StyleSheet.create({
 class ContactsList extends Component {
     constructor(props) {
         super(props);
-        console.log(props.chat.participants);
 
         this.state = {
             selector: this.props.chat? {_id: {$in: props.chat.participants}} : {'friends': {$in: [Meteor.userId()]}}
-        }
+        };
     }
 
     render() {

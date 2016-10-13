@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {StyleSheet, Text, View, ListView, TextInput, TouchableOpacity} from "react-native";
+import {StyleSheet, Text, View, ListView, TextInput, TouchableOpacity, Alert} from "react-native";
 import { Actions } from 'react-native-router-flux';
 import { Users } from '../../../lib/collections';
 
@@ -51,7 +51,7 @@ class ContactsAddFriend extends Component {
     }
 
     _handleButtonPress(state) {
-        console.log(Users.addFriend(state.email));
+        Alert.alert(Users.addFriend(state.email));
     }
 
     render() {

@@ -77,7 +77,7 @@ class LoggedIn extends Component {
                             title="Chat Participants"
                             onRight={(props) => {Actions.chats_tab_invite({onTouch: (contact) => {
                                 Chats.inviteContactToConversation(props.chat, contact);
-                                Alert.alert('Added to chat', null, () => Actions.pop() );
+                                Alert.alert('Added to chat', null, () => Actions.pop({popNum: 2}) );
                             }})}}
                             rightTitle="Invite"
                         />

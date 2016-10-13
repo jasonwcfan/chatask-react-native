@@ -35,7 +35,7 @@ class ChatsList extends Component {
             <View style={[styles.container, this.props.sceneStyle ]}>
                 <MeteorListView
                     collection="chats"
-                    selector={{'participants._id': Meteor.user()._id}}
+                    selector={{participants: Meteor.user()._id}}
                     renderRow={(chat) => <ChatsRow chat={chat} />}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                     renderHeader={() => <ChatsSearch />}
