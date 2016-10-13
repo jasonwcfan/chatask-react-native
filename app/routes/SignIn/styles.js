@@ -27,8 +27,8 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        width: 125,
-        height: 125,
+        width: 150,
+        height: 150,
     },
     headerText: {
         fontSize: 30,

@@ -15,10 +15,10 @@ const SignIn = (props) => {
                 <Image
                 style={styles.logo}
                 source={images.logo}
+                resizeMode="contain"
                 />
 
-                <Text style={styles.headerText}>React Native Meteor</Text>
-                <Text style={styles.subHeaderText}>Boilerplate</Text>
+                <Text style={styles.subHeaderText}>Secure Messenger</Text>
             </View>
 
             <InputWrapper>
