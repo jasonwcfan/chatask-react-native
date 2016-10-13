@@ -34,13 +34,18 @@ class SignInContainer extends Component {
         const { name, email, password, confirmPassword, creatingNewAccount } = this.state;
         let valid = true;
 
-        if (name.length === 0 || email.length === 0 || password.length === 0) {
-            this.handleError('Name, email and password cannot be empty.');
+        if (email.length === 0 || password.length === 0) {
+            this.handleError('Email and password cannot be empty.');
             valid = false;
         }
 
         if (!overrideConfirm && creatingNewAccount && password !== confirmPassword) {
             this.handleError('Passwords do not match.');
+            valid = false;
+        }
+
+        if (name.length === 0 && creatingNewAccount === true) {
+            this.handleError('Name cannot be empty');
             valid = false;
         }
 
