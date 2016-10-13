@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {StyleSheet, Text, View, ListView} from "react-native";
 import { MeteorListView } from 'react-native-meteor';
+import Meteor from 'react-native-meteor';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import ContactsRow from '../ContactsRow';
@@ -24,6 +25,11 @@ const styles = StyleSheet.create({
 class ContactsList extends Component {
     constructor(props) {
         super(props);
+        console.log(Meteor.userId());
+
+        this.state = {
+            selector: this.props.selector? this.props.selector : {'friends': {$in: [Meteor.userId()]}}
+        }
     }
 
     render() {
@@ -34,7 +40,7 @@ class ContactsList extends Component {
             <View style={[styles.container, this.props.sceneStyle ]}>
                 <MeteorListView
                     collection="users"
-                    selector={this.props.selector}
+                    selector={this.state.selector}
                     renderRow={(contact) => <ContactsRow contact={contact} onTouch={this.props.onTouch}/>}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                     renderHeader={() => <ContactsSearch />}
@@ -51,10 +57,6 @@ ContactsList.propTypes = {
     contactsReady: PropTypes.bool,
     onTouch: PropTypes.func,
     selector: PropTypes.object
-};
-
-ContactsList.defaultProps = {
-    selector: {}
 };
 
 export default ContactsList;
