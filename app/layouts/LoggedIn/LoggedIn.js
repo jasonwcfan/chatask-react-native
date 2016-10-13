@@ -65,7 +65,7 @@ class LoggedIn extends Component {
                         <Scene
                             key="chats_tab_detail"
                             component={ChatView}
-                            title="Chat Name Placeholder"
+                            getTitle={(props) => {return props.chat? props.chat.name : null}}
                             onRight={(props) => {Actions.chats_tab_participants({
                                 chat: props.chat
                             })}}
