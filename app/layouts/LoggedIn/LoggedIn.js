@@ -67,7 +67,7 @@ class LoggedIn extends Component {
                             component={ChatView}
                             title="Chat Name Placeholder"
                             onRight={(props) => {Actions.chats_tab_participants({
-                                selector: {}
+                                chat: props.chat
                             })}}
                             rightTitle="Details"
                         />
