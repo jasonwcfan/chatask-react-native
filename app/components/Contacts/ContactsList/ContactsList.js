@@ -43,6 +43,7 @@ class ContactsList extends Component {
                     renderRow={(contact) => <ContactsRow contact={contact} onTouch={this.props.onTouch}/>}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                     renderHeader={() => <ContactsSearch />}
+                    enableEmptySections
                 />
             </View>
         );

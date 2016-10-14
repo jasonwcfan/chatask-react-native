@@ -39,6 +39,7 @@ class ChatsList extends Component {
                     renderRow={(chat) => <ChatsRow chat={chat} />}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                     renderHeader={() => <ChatsSearch />}
+                    enableEmptySections
                 />
             </View>
         );
