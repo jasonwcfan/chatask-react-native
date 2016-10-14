@@ -106,15 +106,32 @@ class LoggedIn extends Component {
                         <Scene
                             key="contacts_tab_add_friend"
                             component={ContactsAddFriend}
-                            title="Contact Name Placeholder"
+                            title="Add Friend"
                         />
                     </Scene>
                     <Scene
                         key="tasks_tab"
                         component={TasksView}
                         title="Tasks"
-                        icon={TabIcon}
-                    />
+                        icon={TabIcon} >
+                        <Scene
+                            key="tasks_tab_master"
+                            component={ContactsList}
+                            title="Contacts"
+                            onRight={(props) => Actions.contacts_tab_add_friend()}
+                            rightTitle="Add"
+                        />
+                        <Scene
+                            key="tasks_tab_detail"
+                            component={ContactsView}
+                            title="Contact Name Placeholder"
+                        />
+                        <Scene
+                            key="task_tab_create"
+                            component={ContactsAddFriend}
+                            title="Contact Name Placeholder"
+                        />
+                    </Scene>
                     <Scene
                         key="settings_tab"
                         component={SettingsView}
