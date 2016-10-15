@@ -5,7 +5,7 @@ import Meteor from 'react-native-meteor';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import ContactsRow from '../ContactsRow';
-import ContactsSearch from '../ContactsSearch'
+import Searchbar from '../../Searchbar/Searchbar';
 import Loading from '../../Loading'
 
 const styles = StyleSheet.create({
@@ -42,7 +42,11 @@ class ContactsList extends Component {
                     selector={this.state.selector}
                     renderRow={(contact) => <ContactsRow contact={contact} onTouch={this.props.onTouch}/>}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+<<<<<<< HEAD
                     renderHeader={() => <ContactsSearch />}
+=======
+                    renderHeader={() => <Searchbar />}
+>>>>>>> v0.1-october-13
                     enableEmptySections
                 />
             </View>

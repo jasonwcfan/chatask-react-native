@@ -5,7 +5,7 @@ import { MeteorListView } from 'react-native-meteor';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import ChatsRow from '../ChatsRow';
-import ChatsSearch from '../ChatsSearch'
+import Searchbar from '../../Searchbar/Searchbar';
 import Loading from '../../Loading'
 
 const styles = StyleSheet.create({
@@ -38,7 +38,11 @@ class ChatsList extends Component {
                     selector={{participants: Meteor.user()._id}}
                     renderRow={(chat) => <ChatsRow chat={chat} />}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+<<<<<<< HEAD
                     renderHeader={() => <ChatsSearch />}
+=======
+                    renderHeader={() => <Searchbar />}
+>>>>>>> v0.1-october-13
                     enableEmptySections
                 />
             </View>
