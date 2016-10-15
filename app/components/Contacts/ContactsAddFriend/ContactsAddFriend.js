@@ -50,8 +50,8 @@ class ContactsAddFriend extends Component {
         };
     }
 
-    _handleButtonPress(state) {
-        Alert.alert(Users.addFriend(state.email));
+    _handleButtonPress() {
+        Alert.alert(Users.addFriend(this.state.email));
     }
 
     render() {
@@ -65,7 +65,7 @@ class ContactsAddFriend extends Component {
                         onChangeText={(email) => this.setState({email})}
                     />
                 </View>
-                <TouchableOpacity style={styles.button} onPress={() => this._handleButtonPress(this.state)}>
+                <TouchableOpacity style={styles.button} onPress={this._handleButtonPress.bind(this)}>
                     <Text>Add Friend</Text>
                 </TouchableOpacity>
             </View>
