@@ -38,11 +38,7 @@ class ChatsList extends Component {
                     selector={{participants: Meteor.user()._id}}
                     renderRow={(chat) => <ChatsRow chat={chat} />}
                     renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-<<<<<<< HEAD
-                    renderHeader={() => <ChatsSearch />}
-=======
                     renderHeader={() => <Searchbar />}
->>>>>>> v0.1-october-13
                     enableEmptySections
                 />
             </View>
