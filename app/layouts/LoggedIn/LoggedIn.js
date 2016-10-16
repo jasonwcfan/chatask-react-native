@@ -12,6 +12,7 @@ import ContactsList from '../../components/Contacts/ContactsList';
 import ContactsAddFriend from '../../components/Contacts/ContactsAddFriend';
 import TasksList from '../../components/Tasks/TasksList';
 import TasksView from '../../components/Tasks/TasksRow';
+import NewTaskView from '../../components/Tasks/NewTaskView';
 import { Chats } from '../../lib/collections';
 
 const reducerCreate = params => {
@@ -129,8 +130,8 @@ class LoggedIn extends Component {
                         />
                         <Scene
                             key="task_tab_create"
-                            component={ContactsAddFriend}
-                            title="Contact Name Placeholder"
+                            component={NewTaskView}
+                            title="Task Name Placeholder"
                         />
                     </Scene>
                     <Scene

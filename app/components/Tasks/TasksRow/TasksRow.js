@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
 
 
 class TasksRow extends Component {
+    constructor(props) {
+        super(props);
+    }
+    
     _showTask() {
         return Actions.tasks_tab_detail(this.props);
     }
