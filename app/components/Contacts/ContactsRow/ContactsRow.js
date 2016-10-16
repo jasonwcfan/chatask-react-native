@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import Meteor from 'react-native-meteor';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import GiftedAvatar from 'react-native-gifted-chat/src/GiftedAvatar';
 
 const styles = StyleSheet.create({
     container: {
@@ -26,6 +28,7 @@ class ContactsRow extends Component {
     render() {
         return (
             <TouchableOpacity style={styles.container} onPress={() => {this.props.onTouch(this.props.contact)}}>
+                <GiftedAvatar user={{name: this.props.contact.profile.name}}/>
                 <Text style={styles.text}>
                     {this.props.contact.profile.name}
                 </Text>
