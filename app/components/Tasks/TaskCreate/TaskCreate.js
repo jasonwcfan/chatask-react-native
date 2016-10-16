@@ -6,7 +6,7 @@ const Form = t.form.Form;
 
 var TaskForm = t.struct({
     title: t.String,
-    body: t.maybe(t.String),
+    description: t.maybe(t.String),
     assignToSelf: t.Boolean,
     assignTo: t.Number,
 });
@@ -14,13 +14,15 @@ var TaskForm = t.struct({
 var options = {
     fields: {
         title: {},
-        body: {},
+        description: {
+            multiline: true,
+        },
         assignToSelf: {},
         assignTo: {}
     }
 };
 
-class TaskView extends Component {
+class TaskCreate extends Component {
     constructor(props) {
         super(props);
 
@@ -34,7 +36,7 @@ class TaskView extends Component {
         const options = t.update(this.state.options, {
             fields: {
                 title: {},
-                body: {},
+                description: {},
                 assignToSelf: {},
                 assignTo: {
                     editable: {'$set': !value.assignToSelf}
@@ -99,4 +101,4 @@ var styles = StyleSheet.create({
 });
 
 
-export default TaskView;
+export default TaskCreate;
