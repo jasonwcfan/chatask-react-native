@@ -1,7 +1,7 @@
 import React from 'react';
 import Meteor from 'react-native-meteor';
 
-const Chat = {
+const Chats = {
     createChat: function(name, participants) {
         Meteor.call('chats.insert', name, participants);
     },
@@ -15,4 +15,4 @@ const Chat = {
     }
 };
 
-export default Chat;
+export default Chats;

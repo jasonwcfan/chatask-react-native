@@ -5,11 +5,13 @@ import { Scene, Router, TabBar, Modal, Schema, Actions, Reducer, ActionConst } f
 import Routes from '../../config/routes';
 import images from '../../config/images';
 import styles from './styles';
-import { ContactsView, TasksView, SettingsView, TabIcon } from '../../components/Navigation';
+import { ContactsView, SettingsView, TabIcon } from '../../components/Navigation';
 import ChatsList from '../../components/Chats/ChatsList';
 import ChatView from '../../components/Chats/ChatView';
 import ContactsList from '../../components/Contacts/ContactsList';
 import ContactsAddFriend from '../../components/Contacts/ContactsAddFriend';
+import TasksList from '../../components/Tasks/TasksList';
+import TasksView from '../../components/Tasks/TasksRow';
 import { Chats } from '../../lib/collections';
 
 const reducerCreate = params => {
@@ -111,20 +113,19 @@ class LoggedIn extends Component {
                     </Scene>
                     <Scene
                         key="tasks_tab"
-                        component={TasksView}
                         title="Tasks"
                         icon={TabIcon} >
                         <Scene
                             key="tasks_tab_master"
-                            component={ContactsList}
-                            title="Contacts"
+                            component={TasksList}
+                            title="Tasks"
                             onRight={(props) => Actions.contacts_tab_add_friend()}
                             rightTitle="Add"
                         />
                         <Scene
                             key="tasks_tab_detail"
-                            component={ContactsView}
-                            title="Contact Name Placeholder"
+                            component={TasksView}
+                            title="Task Name Placeholder"
                         />
                         <Scene
                             key="task_tab_create"
