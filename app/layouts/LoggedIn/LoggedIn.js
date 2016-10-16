@@ -119,8 +119,8 @@ class LoggedIn extends Component {
                             key="tasks_tab_master"
                             component={TasksList}
                             title="Tasks"
-                            onRight={(props) => Actions.contacts_tab_add_friend()}
-                            rightTitle="Add"
+                            onRight={(props) => Actions.task_tab_create()}
+                            rightTitle="New"
                         />
                         <Scene
                             key="tasks_tab_detail"

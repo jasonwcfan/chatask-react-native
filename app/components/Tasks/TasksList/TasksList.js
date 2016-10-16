@@ -28,7 +28,7 @@ class TasksList extends Component {
     }
 
     render() {
-        if (!this.props.TasksReady) {
+        if (!this.props.tasksReady) {
             return <Loading />
         }
         return (
